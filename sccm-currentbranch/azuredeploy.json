@@ -25,14 +25,14 @@
         "description": "Input must meet password complexity requirements as documented for property 'adminPassword' in https://docs.microsoft.com/en-us/rest/api/compute/virtualmachines/virtualmachines-create-or-update"
       }
     },
-    "_artifactsLocation": {
+    "_MyartifactsLocation": {
       "type": "string",
       "metadata": {
         "description": "The base URI where artifacts required by this template are located including a trailing '/'"
       },
       "defaultValue": "https://cmsetoolstorage.blob.core.windows.net/tptest/"
     },
-    "_artifactsLocationSasToken": {
+    "_MyartifactsLocationSasToken": {
       "type": "securestring",
       "metadata": {
         "description": "The sasToken required to access _artifactsLocation.  When the template is deployed using the accompanying scripts, a sasToken will be automatically generated. Use the defaultValue if the staging location is not secured."
@@ -192,7 +192,7 @@
         "typeHandlerVersion": "2.21",
         "autoUpgradeMinorVersion": true,
         "settings": {
-          "modulesUrl": "[Uri(parameters('_artifactsLocation'),concat(variables('dscScript'),parameters('_artifactsLocationSasToken')))]",
+          "modulesUrl": "[Uri(parameters('_MyartifactsLocation'),concat(variables('dscScript'),parameters('_MyartifactsLocationSasToken')))]",
           "configurationFunction": "[concat(variables('vmrole')[copyIndex()],'Configuration.ps1\\Configuration')]",
           "Properties": {
             "DomainName": "[variables('domainName')]",
